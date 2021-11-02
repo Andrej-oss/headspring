@@ -2,9 +2,15 @@ package com.example.headspring;
 
 public class CoronaDisinfect {
 
-    public void start(Room room){
+    private Announcer announcer = new ConsoleAnnouncer();
+    private Policemen policemen = new PolicemenImpl();
 
+
+    public void start(Room room){
+        announcer.announce("Lets start disinfection. Everybody get out");
+        policemen.makeGetOutPeople();
         disinfect();
+        announcer.announce("Can enter to the room");
 
     }
 
