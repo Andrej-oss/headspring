@@ -2,8 +2,8 @@ package com.example.headspring;
 
 public class CoronaDisinfect {
 
-    private Announcer announcer = new ConsoleAnnouncer();
-    private Policemen policemen = new PolicemenImpl();
+    private Announcer announcer = ObjectFactory.getObjectFactory().createObject(ConsoleAnnouncer.class);
+    private Policemen policemen = ObjectFactory.getObjectFactory().createObject(Policemen.class);
 
 
     public void start(Room room){
