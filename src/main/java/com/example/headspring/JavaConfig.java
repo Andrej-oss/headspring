@@ -1,5 +1,6 @@
 package com.example.headspring;
 
+import lombok.Getter;
 import org. reflections.Reflections;
 
 import java.util.*;
@@ -7,6 +8,7 @@ import java.util.function.Function;
 
 public class JavaConfig implements Config {
 
+    @Getter
     private Reflections scanner;
     private Map<Class, Class> ifc2ImplClass;
 
