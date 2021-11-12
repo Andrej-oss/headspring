@@ -1,8 +1,12 @@
 package com.example.headspring;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 public class ConsoleAnnouncer implements Announcer{
 
-    private Recommendator recommendator = ObjectFactory.getObjectFactory().createObject(Recommendator.class);
+    @Autowired
+    private Recommendator recommendator;
 
     public void announce(String message) {
         recommendator.recommend();
