@@ -1,8 +1,10 @@
 package com.example.headspring;
 
-import lombok.Setter;
 import lombok.SneakyThrows;
 
+import javax.annotation.PostConstruct;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.*;
 
 
@@ -21,9 +23,18 @@ public class ObjectFactory {
 
     @SneakyThrows
     public <T> T createObject(Class<T> type){
-        final T t = type. getDeclaredConstructor().newInstance();
+        final T t = type.getDeclaredConstructor().newInstance();
 
         configurators.forEach( configurator -> configurator.configure(t,context));
+        invokeInit(type, t);
         return t;
+    }
+
+    private <T> void invokeInit(Class<T> type, T t) throws IllegalAccessException, InvocationTargetException {
+        for (Method method : type.getMethods()) {
+            if (method.isAnnotationPresent(PostConstruct.class)){
+                method.invoke(t);
+            }
+        }
     }
 }

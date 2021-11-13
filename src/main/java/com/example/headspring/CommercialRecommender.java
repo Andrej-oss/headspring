@@ -5,7 +5,7 @@ public class CommercialRecommender implements Recommendator {
     @InjectProperty
     private String alcohol;
 
-    public CommercialRecommender() {
+    public void init() {
         System.out.println("Commercial recommendator was created");
     }
 
