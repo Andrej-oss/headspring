@@ -1,5 +1,6 @@
 package com.example.headspring;
 
+@Deprecated
 public class CoronaDisinfect {
 
     @Autowired

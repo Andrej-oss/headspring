@@ -1,6 +1,7 @@
 package com.example.headspring;
 
 //@Singleton
+@Deprecated
 public class CommercialRecommender implements Recommendator {
     @InjectProperty
     private String alcohol;
